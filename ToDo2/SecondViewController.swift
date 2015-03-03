@@ -75,10 +75,9 @@ class SecondViewController: UIViewController, UITextFieldDelegate {
        //Events
     @IBAction func btnAddTask_Click(sender: UIButton) {
         println("the button was clicked")
-        taskMgr.addTask(todos,color:ColorNb);
+        taskMgr.addTask(txtTask.text,color:ColorNb);
         self.view.endEditing(true)
         todos += [txtTask.text]
-        //todos = txtTask.text
         defaults.setObject(todos, forKey: "todo")
         println(defaults.objectForKey("todo"))
 

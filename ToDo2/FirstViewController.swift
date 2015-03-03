@@ -12,7 +12,7 @@ import CoreData
 class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
 
     @IBOutlet var tblTasks: UITableView!
-    
+    var todos:[String] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -37,10 +37,12 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let todo: AnyObject! = defaults.objectForKey("todo")
         let cell: UITableViewCell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "test")
         println(todo)
-        cell.textLabel?.text = "\(todo)"
- 
+        for var i = 0;i < todo.count;i++ {
+        todos[i] = todos[i] + "\(todo[i+1])"
+        cell.textLabel?.text = todos[i]
+        }
+        //cell.textLabel?.text = "\(todos)"
         tblTasks.reloadData()
-        
     }
     //UITableViewDelete
     func tableView(tableView: UITableView!, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath!){
@@ -66,11 +68,9 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let defaults = NSUserDefaults.standardUserDefaults()
         let todos:AnyObject! = defaults.objectForKey("todo")
         
-       /* for var i = 0;i<todos.count;i++ {
-            todos[i]
-        }*/
-         //cell.textLabel?.text = taskMgr.tasks[indexPath.row].name
-         cell.textLabel?.text = "\(todos[indexPath.row])"
+       
+         cell.textLabel?.text = taskMgr.tasks[indexPath.row].name
+         //cell.textLabel?.text = "\(todos[indexPath.row])"
  
         
         switch (taskMgr.tasks[indexPath.row].color){

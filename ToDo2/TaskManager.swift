@@ -3,7 +3,7 @@ import UIKit
 var taskMgr: TaskManager = TaskManager()
 
 struct task {
-    var name:NSArray = []
+    var name = "non-named"
     var color = 0
    
 }
@@ -12,7 +12,7 @@ class TaskManager: NSObject {
 
     var tasks :[task] = []
     
-    func addTask(name : NSArray,color:Int){
+    func addTask(name : String,color:Int){
         tasks.append(task(name: name,color:color))
     }
 }
