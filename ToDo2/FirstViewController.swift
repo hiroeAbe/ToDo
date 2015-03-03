@@ -37,10 +37,10 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let todo: AnyObject! = defaults.objectForKey("todo")
         let cell: UITableViewCell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "test")
         println(todo)
-        for var i = 0;i < todo.count;i++ {
-        todos[i] = todos[i] + "\(todo[i+1])"
-        cell.textLabel?.text = todos[i]
+        for var i = 0;i<todo.count;i++ {
+            todos[i] = "\(todo[i])"
         }
+        
         //cell.textLabel?.text = "\(todos)"
         tblTasks.reloadData()
     }
@@ -69,8 +69,8 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let todos:AnyObject! = defaults.objectForKey("todo")
         
        
-         cell.textLabel?.text = taskMgr.tasks[indexPath.row].name
-         //cell.textLabel?.text = "\(todos[indexPath.row])"
+         //cell.textLabel?.text = taskMgr.tasks[indexPath.row].name
+         cell.textLabel?.text = "\(todos[indexPath.row])"
  
         
         switch (taskMgr.tasks[indexPath.row].color){
