@@ -15,6 +15,7 @@ class SecondViewController: UIViewController, UITextFieldDelegate {
     
     var ColorNb = 0
     var todos :[String] = []
+    var number :[Int] = []
     let defaults = NSUserDefaults.standardUserDefaults()
     
     override func viewDidLoad() {
@@ -76,10 +77,20 @@ class SecondViewController: UIViewController, UITextFieldDelegate {
     @IBAction func btnAddTask_Click(sender: UIButton) {
         println("the button was clicked")
         taskMgr.addTask(txtTask.text,color:ColorNb);
+        if defaults.objectForKey("todo") != nil {
+            todos = defaults.objectForKey("todo") as Array
+            number = defaults.objectForKey("number") as Array
+        }
+
+        
         self.view.endEditing(true)
         todos += [txtTask.text]
+        number += [ColorNb]
         defaults.setObject(todos, forKey: "todo")
+        defaults.setObject(number, forKey: "number")
+
         println(defaults.objectForKey("todo"))
+        println(defaults.objectForKey("number"))
 
         let success = defaults.synchronize()
         if success {
